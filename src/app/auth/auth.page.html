@@ -1,0 +1,130 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{isLogin ? 'Oturum Aç' : 'Kayıt Ol' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content
+  class="ion-padding"
+  scrollY="ture"
+  style="text-align: center; margin-top: auto; align-items: center;"
+>
+  <!-- <div style="height: 40%; width: 100%;">
+    <ion-item lines="none">
+      <ion-img
+        style="
+          margin-left: auto;
+          margin-bottom: auto;
+          margin-top: 1%;
+          height: 70%;
+          width: 40%;
+        "
+        src="../../assets/icon/logo.png"
+      ></ion-img>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-img
+        style="
+          margin-left: auto;
+          margin-right: auto;
+          margin-bottom: auto;
+          margin-top: 2%;
+          height: 80%;
+          width: 80%;
+        "
+        src="../../assets/icon/stokbar.png"
+      ></ion-img>
+    </ion-item>
+    <ion-label style="font-size: small; color: gray; margin-left: 25%;"
+      >Stok ve Üretim Yönetimi Çözümü</ion-label
+    >
+  </div> -->
+
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <ion-card
+      style="
+      border-radius: 20px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      "
+    >
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col size-md="6" offset-md="3">
+              <div style="position: static; height: 10%;">
+                <ion-item>
+                  <ion-label position="floating">E-Mail</ion-label>
+                  <ion-input
+                    type="email"
+                    ngModel
+                    name="email"
+                    required
+                    email
+                    #emailCtrl="ngModel"
+                  ></ion-input>
+                </ion-item>
+                <!-- <ion-item
+                  color="danger"
+                  *ngIf="!emailCtrl.valid && emailCtrl.touched"
+                >
+                  <ion-label>
+                    Geçerli bir E-mail adresi girin.
+                  </ion-label>
+                </ion-item> -->
+                <ion-item>
+                  <ion-label position="floating">Şifre</ion-label>
+                  <ion-input
+                    type="password"
+                    ngModel
+                    name="password"
+                    required
+                    minlength="6"
+                    #passCtrl="ngModel"
+                  ></ion-input>
+                </ion-item>
+                <ion-item
+                  color="danger"
+                  *ngIf="!passCtrl.valid && passCtrl.touched"
+                >
+                  <ion-label>
+                    Şifre en az 6 karakterli olmalıdır.
+                  </ion-label>
+                </ion-item>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size-md="6" offset-md="3">
+              <div style="height: 20%; padding-top: 1%;">
+                <!-- <ion-spinner color="primary" *ngIf="isLoading"></ion-spinner> -->
+                <ion-button
+                  type="submit"
+                  color="primary"
+                  expand="block"
+                  [disabled]="!f.valid"
+                >
+                  {{ isLogin ? 'Giriş Yap' : 'Kayıt Ol' }}
+                </ion-button>
+                <ion-button
+                  type="button"
+                  color="primary"
+                  fill="outline"
+                  expand="block"
+                  (click)="onSwitchAuthMode()"
+                  >{{isLogin ? 'Kayıt Ol' : 'Oturum Aç' }}</ion-button
+                >
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </form>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    
+  </ion-toolbar>
+</ion-footer>
